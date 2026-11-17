@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Linea — 유튜브 뮤직 싱크 가사 위젯</title>
+  <meta name="description"
+    content="유튜브 뮤직에서 재생 중인 곡의 싱크 가사를 화면 위에 띄워 주는 데스크톱 위젯. 한국어 번역, 뮤직비디오 보기, 이퀄라이저까지. macOS · Windows 무료.">
+  <meta property="og:title" content="Linea — 유튜브 뮤직 싱크 가사 위젯">
+  <meta property="og:description" content="재생 중인 곡의 가사가 한 줄씩, 한국어 번역과 함께.">
+  <meta property="og:image" content="assets/icon.png">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+  <link rel="stylesheet" href="style.css">
+  <!-- 스크립트가 켜진 경우에만 스크롤 등장 효과 (꺼져 있으면 내용이 그대로 보임) -->
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+
+<body>
+  <!-- 배경 빛 (아이콘 색) -->
+  <div class="glow" aria-hidden="true">
+    <span class="g1"></span><span class="g2"></span><span class="g3"></span><span class="g4"></span>
+  </div>
+
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Linea 홈">
+      <img src="assets/icon.png" alt="" width="28" height="28">
+      <span>Linea</span>
+    </a>
+    <nav class="nav-links" aria-label="주요 메뉴">
+      <a href="#features">기능</a>
+      <a href="#install">설치</a>
+      <a href="#usage">사용법</a>
+      <a href="#faq">자주 묻는 질문</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn btn-ghost btn-sm" href="https://github.com/Saynotrue/Linea" target="_blank" rel="noopener">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true">
+          <path fill="currentColor"
+            d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
+        </svg>
+        GitHub
+      </a>
+      <a class="btn btn-primary btn-sm" href="#download">다운로드</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <!-- ───────── 히어로 ───────── -->
+    <section class="hero">
+      <p class="eyebrow reveal"><span class="dot"></span> 무료 · 오픈소스 · macOS & Windows</p>
+      <h1 class="reveal">듣고 있는 노래의 가사,<br><span class="grad">한 줄씩 정확하게.</span></h1>
+      <p class="lead reveal">Linea는 유튜브 뮤직에서 재생 중인 곡의 싱크 가사를 화면 위에 띄워 주는 데스크톱 위젯이에요.
+        외국어 가사는 한국어 번역과 함께, 전체화면에서는 뮤직비디오와 함께.</p>
+      <div class="hero-cta reveal" id="download">
+        <a class="btn btn-primary btn-lg" data-asset="linea-mac" data-os="mac"
+          href="https://github.com/Saynotrue/Linea/releases/latest">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+            <path fill="currentColor"
+              d="M16.37 12.6c-.02-2.3 1.88-3.4 1.97-3.46-1.07-1.57-2.74-1.78-3.33-1.8-1.42-.14-2.77.84-3.49.84-.72 0-1.83-.82-3.01-.8-1.55.02-2.98.9-3.78 2.29-1.61 2.8-.41 6.94 1.16 9.21.77 1.11 1.68 2.36 2.88 2.31 1.16-.05 1.59-.75 2.99-.75 1.4 0 1.79.75 3.01.72 1.24-.02 2.03-1.13 2.79-2.25.88-1.29 1.24-2.54 1.26-2.6-.03-.01-2.42-.93-2.45-3.68zM14.07 5.85c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.78-.97 2.83 1.02.08 2.07-.52 2.71-1.29z" />
+          </svg>
+          macOS용 다운로드
+        </a>
+        <a class="btn btn-glass btn-lg" data-asset="linea-win-setup" data-os="win"
+          href="https://github.com/Saynotrue/Linea/releases/latest">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path fill="currentColor" d="M3 5.5 10 4.5v7H3zm0 13 7 1v-7H3zM11 4.3 21 3v8.5H11zm0 15.4L21 21v-8.5H11z" />
+          </svg>
+          Windows용 다운로드
+        </a>
+      </div>
+      <p class="hero-note reveal"><span data-version>최신 버전</span> · macOS (Apple Silicon M1 이상) · Windows 10/11 (x64) ·
+        <a href="https://github.com/Saynotrue/Linea/releases/latest" target="_blank" rel="noopener">모든 파일 보기</a>
+      </p>
+
+      <!-- 앱 화면 목업 (전체화면 가사 화면) -->
+      <div class="mock-wrap reveal">
+        <div class="mock-window">
+          <div class="mock-titlebar">
+            <span class="tl r"></span><span class="tl y"></span><span class="tl g"></span>
+            <span class="mock-title">Linea</span>
+          </div>
+          <!-- 실제 앱 전체화면의 위치·크기를 창 폭 기준 비율(cqw)로 옮긴 데모 플레이어 (demo.js). 버튼은 실제로 동작 -->
+          <div class="mock-body" id="demo" tabindex="-1" aria-label="Linea 전체화면 데모. 버튼을 눌러 볼 수 있어요">
+            <div class="mock-bg" aria-hidden="true"></div>
+            <!-- 영상으로 볼 때의 배경: 같은 영상을 작게 그려 흐리게 늘림 -->
+            <canvas class="mock-video-bg" id="mv-bg" width="128" height="72" aria-hidden="true"></canvas>
+            <button class="mock-art" id="mock-art" type="button" aria-label="뮤직비디오로 보기"><span></span></button>
+            <!-- 앨범 아트를 누르면 나오는 영상 (곡마다 다른 색의 직접 그린 예시 영상) -->
+            <button class="mock-video" id="mock-video" type="button" aria-label="앨범 아트로 돌아가기">
+              <canvas id="mv-canvas" width="480" height="270"></canvas>
+            </button>
+            <div class="mock-hint" id="mock-hint" aria-hidden="true">앨범 아트를 눌러 보세요</div>
+            <div class="mock-song" id="demo-title"></div>
+            <div class="mock-singer" id="demo-artist"></div>
+            <div class="mock-eq" id="demo-eq" aria-hidden="true">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+            <div class="mock-controls">
+              <button type="button" id="demo-prev" aria-label="이전 곡"><svg viewBox="0 0 24 24">
+                  <path d="M6 5h2v14H6zM20 5v14l-10-7z" />
+                </svg></button>
+              <button type="button" id="demo-play" aria-label="일시정지"><svg viewBox="0 0 24 24">
+                  <path class="ico-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
+                  <path class="ico-play" d="M7 4.5v15L19.5 12z" />
+                </svg></button>
+              <button type="button" id="demo-next" aria-label="다음 곡"><svg viewBox="0 0 24 24">
+                  <path d="M16 5h2v14h-2zM4 5v14l10-7z" />
+                </svg></button>
+            </div>
+            <div class="mock-progress" id="demo-progress" role="slider" tabindex="0" aria-label="재생 위치"
+              aria-valuemin="0">
+              <span class="fill"></span><span class="tip" id="demo-tip">0:00</span>
+            </div>
+            <div class="mock-lyrics" id="lyric-track"></div>
+            <button class="mock-btn mock-tr" id="demo-tr" type="button" aria-label="가사 번역"
+              aria-pressed="true">文<small>가</small></button>
+            <div class="mock-vol-wrap">
+              <div class="mock-vol-pop" id="demo-vol-pop">
+                <input id="demo-vol" type="range" min="0" max="100" value="70" aria-label="소리 크기">
+              </div>
+              <button class="mock-vol" id="demo-mute" type="button" aria-label="소리 켜기">
+                <svg viewBox="0 0 24 24">
+                  <path class="spk" d="M4 9.5h3.5L12 6v12l-4.5-3.5H4z" />
+                  <path class="wave" d="M15 9.5a3.5 3.5 0 010 5M17.5 7.5a6.5 6.5 0 010 9" fill="none" />
+                  <path class="x" d="M15.5 9.5l5 5M20.5 9.5l-5 5" fill="none" />
+                </svg>
+              </button>
+              <span class="mock-sound-hint" id="demo-sound-hint">소리 켜기</span>
+            </div>
+            <button class="mock-btn mock-ly is-on" id="demo-ly" type="button" aria-label="가사 창" aria-pressed="true">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M5 5h14a1.5 1.5 0 011.5 1.5v9A1.5 1.5 0 0119 17h-7l-4.5 3.5V17H5a1.5 1.5 0 01-1.5-1.5v-9A1.5 1.5 0 015 5z"
+                  fill="none" />
+                <path d="M8 9.5h8M8 12.5h5" fill="none" />
+              </svg>
+            </button>
+            <div class="mock-toast" id="demo-toast" role="status" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <!-- 떠 있는 바 위젯 (데모와 같이 움직임) -->
+        <div class="mock-bar" aria-hidden="true">
+          <div class="mini-art"></div>
+          <div class="mini-text"><strong id="mini-title"></strong><span id="mini-artist"></span></div>
+          <div class="mini-lyric" id="mini-lyric"></div>
+          <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+      </div>
+      <p class="demo-caption reveal">위 화면은 직접 눌러 볼 수 있는 데모예요. 재생 · 이전/다음 곡, 진행 바, 가사 줄, 번역(文가), 가사 창, 소리, 앨범 아트를 눌러 보세요.
+        <span>곡 · 가사 · 영상 · 음악은 모두 데모용으로 만든 예시예요.</span>
+      </p>
+    </section>
+
+    <!-- ───────── 기능 ───────── -->
+    <section class="section" id="features">
+      <div class="section-head reveal">
+        <p class="kicker">기능</p>
+        <h2>가사를 보는 가장 편한 방법</h2>
+        <p>유튜브 뮤직은 평소처럼 듣고, 가사는 Linea가 챙겨요.</p>
+      </div>
+
+      <div class="bento">
+        <article class="card card-wide reveal">
+          <div class="card-icon c-green">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 6h16M4 12h10M4 18h7" />
+            </svg>
+          </div>
+          <h3>재생에 맞춰 넘어가는 싱크 가사</h3>
+          <p>지금 부르는 줄을 크게, 앞뒤 줄은 흐리게. 가사 줄을 누르면 그 부분으로 바로 이동하고, 가사가 빠르거나 늦으면 ↑ ↓ 키로 맞출 수 있어요.</p>
+          <div class="sync-demo" aria-hidden="true">
+            <span class="past">the night is getting colder</span>
+            <span class="now">but we keep on walking slow</span>
+            <span class="next">counting every streetlight</span>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon c-pink">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M4 5h9M8.5 3v2M6 5c0 4 3 7 6 8M11 5c0 4-3 7-6 9" />
+              <path d="M13 21l4-9 4 9M14.5 18h5" />
+            </svg>
+          </div>
+          <h3>한국어 번역</h3>
+          <p>외국어 가사 아래에 한국어 번역이 붙어요. NVIDIA 무료 AI 키를 넣으면 곡 전체의 흐름과 말투를 살린 번역으로 바뀌어요.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon c-purple">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" rx="3" />
+              <path d="M10 9.5v5l4.5-2.5z" />
+            </svg>
+          </div>
+          <h3>뮤직비디오로 보기</h3>
+          <p>전체화면에서 앨범 아트를 누르면 유튜브 뮤직과 연결된 영상이 재생 위치에 맞춰 나와요. 배경은 그 영상을 흐리게.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon c-blue">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="6" />
+              <path d="M20 20l-4.5-4.5" />
+            </svg>
+          </div>
+          <h3>커버곡도 원곡 가사로</h3>
+          <p>lrclib부터 Apple Music · NetEase · QQ Music, 유튜브 자막까지 차례로 찾아요. 커버 영상도 원곡을 찾아 가사를 띄워요.</p>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon c-green">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M5 14v4M9 9v9M13 5v13M17 11v7" />
+            </svg>
+          </div>
+          <h3>음악에 맞춰 움직이는 화면</h3>
+          <p>소리에 반응하는 이퀄라이저, 앨범 아트 색이 물감처럼 섞이는 배경.</p>
+        </article>
+
+        <article class="card card-wide reveal">
+          <div class="card-icon c-pink">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="15" width="18" height="5" rx="2.5" />
+              <circle cx="7.5" cy="8" r="4.5" />
+              <rect x="14" y="4" width="7" height="8" rx="1.5" />
+            </svg>
+          </div>
+          <h3>원하는 크기로: Bar · LP · 전체화면</h3>
+          <p>작업하면서는 화면 아래의 가는 바로, 책상 위 소품처럼은 돌아가는 LP 위젯으로, 집중해서 들을 때는 전체화면으로. 위젯은 항상 다른 창 위에 떠 있고, 끌어서 옮길 수 있어요.</p>
+          <div class="modes" aria-hidden="true">
+            <div class="mode-bar"><span></span><i></i></div>
+            <div class="mode-lp"><span></span></div>
+            <div class="mode-full"><span></span><i></i><i></i><i></i></div>
+          </div>
+        </article>
+
+        <article class="card reveal">
+          <div class="card-icon c-purple">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </div>
+          <h3>위젯에서 바로 조작</h3>
+          <p>재생 · 일시정지, 이전 · 다음 곡, 구간 이동, 볼륨까지. 소리는 부드럽게 줄었다 커져요.</p>
+        </article>
+
+        <article class="card card-full reveal">
+          <div class="card-icon c-blue">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="5" y="10" width="14" height="10" rx="2" />
+              <path d="M8 10V7a4 4 0 018 0v3" />
+            </svg>
+          </div>
+          <h3>내 컴퓨터 안에서만</h3>
+          <p>위젯과 브라우저는 로컬(127.0.0.1)에서만 통신해요. 계정 정보는 다루지 않아요.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ───────── 설치 방식 고르기 ───────── -->
+    <section class="section" id="install">
+      <div class="section-head reveal">
+        <p class="kicker">설치</p>
+        <h2>세 가지 방식 중 하나만 고르세요</h2>
+        <p>위젯은 유튜브 뮤직의 재생 정보를 받아 가사를 띄워요. 그 정보를 어디서 보내느냐에 따라 방식이 나뉘어요.</p>
+      </div>
+
+      <div class="choose">
+        <button class="choice reveal is-active" data-tab="a" type="button">
+          <span class="tag">추천</span>
+          <span class="choice-letter">A</span>
+          <strong>크롬 확장 프로그램</strong>
+          <span class="choice-sub">Linea + Linea Connector</span>
+          <span class="choice-desc">브라우저에서 평소처럼 들으면서 쓰고 싶은 분</span>
+        </button>
+        <button class="choice reveal" data-tab="b" type="button">
+          <span class="choice-letter">B</span>
+          <strong>Tampermonkey 스크립트</strong>
+          <span class="choice-sub">Linea + Tampermonkey</span>
+          <span class="choice-desc">이미 Tampermonkey를 쓰고 있는 분</span>
+        </button>
+        <button class="choice reveal" data-tab="c" type="button">
+          <span class="choice-letter">C</span>
+          <strong>Linea Player</strong>
+          <span class="choice-sub">앱 하나로 끝</span>
+          <span class="choice-desc">브라우저 없이 앱 안에서 유튜브 뮤직을 듣고 싶은 분</span>
+        </button>
+      </div>
+
+      <!-- A -->
+      <div class="steps-panel" data-panel="a">
+        <ol class="steps">
+          <li class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Linea 앱 설치</h3>
+              <div class="dl-row">
+                <a class="file" data-asset="linea-mac"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>macOS</b><span
+                    data-name="linea-mac">Linea-…-arm64.dmg</span></a>
+                <a class="file" data-asset="linea-win-setup"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>Windows 설치형</b><span
+                    data-name="linea-win-setup">Linea.Setup.….exe</span></a>
+                <a class="file" data-asset="linea-win-portable"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>Windows 실행형</b><span
+                    data-name="linea-win-portable">Linea.….exe</span></a>
+              </div>
+              <p class="muted">macOS는 dmg를 열어 <b>Linea</b>를 응용 프로그램 폴더로 끌어다 놓고 실행하세요. 처음 실행할 때 경고가 뜨면 <a
+                  href="#first-run">첫 실행 경고 해결</a>을 보세요.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Linea Connector 받아서 압축 풀기</h3>
+              <div class="dl-row">
+                <a class="file" data-asset="connector" href="https://github.com/Saynotrue/Linea/releases/latest"><b>크롬
+                    확장 프로그램</b><span data-name="connector">Linea-Connector-….zip</span></a>
+              </div>
+              <p class="muted">아직 크롬 웹 스토어 등록 전이라 직접 불러와요. 풀린 폴더는 지우지 말고 그대로 두세요.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>브라우저에 불러오기</h3>
+              <p>확장 프로그램 관리 화면을 열고 <b>개발자 모드</b>를 켠 뒤, <b>압축해제된 확장 프로그램을 로드합니다</b>를 눌러 풀어 둔
+                폴더(<code>manifest.json</code>이 있는 폴더)를 고르세요.</p>
+              <div class="codes">
+                <button class="copy" data-copy="chrome://extensions"
+                  type="button"><code>chrome://extensions</code><span>복사</span></button>
+                <button class="copy" data-copy="edge://extensions"
+                  type="button"><code>edge://extensions</code><span>복사</span></button>
+                <button class="copy" data-copy="whale://extensions"
+                  type="button"><code>whale://extensions</code><span>복사</span></button>
+              </div>
+              <p class="muted">Chrome · Edge · Whale 등 크롬 계열(111 이상)에서 동작해요. "로컬 네트워크 접근" 허용을 물으면 허용해 주세요.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>유튜브 뮤직에서 재생</h3>
+              <p><a href="https://music.youtube.com" target="_blank" rel="noopener">music.youtube.com</a>을 열거나 새로고침하고 곡을
+                재생하세요. 위젯에 곡 제목과 가사가 나타나면 끝이에요.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- B -->
+      <div class="steps-panel" data-panel="b" hidden>
+        <ol class="steps">
+          <li class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Linea 앱 설치</h3>
+              <div class="dl-row">
+                <a class="file" data-asset="linea-mac"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>macOS</b><span
+                    data-name="linea-mac">Linea-…-arm64.dmg</span></a>
+                <a class="file" data-asset="linea-win-setup"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>Windows 설치형</b><span
+                    data-name="linea-win-setup">Linea.Setup.….exe</span></a>
+                <a class="file" data-asset="linea-win-portable"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>Windows 실행형</b><span
+                    data-name="linea-win-portable">Linea.….exe</span></a>
+              </div>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>Tampermonkey 설치</h3>
+              <p>크롬 계열 브라우저에 <a href="https://www.tampermonkey.net/" target="_blank" rel="noopener">Tampermonkey</a>를
+                설치하세요. Chrome · Edge는 확장 프로그램 관리 화면에서 Tampermonkey <b>세부정보 → 사용자 스크립트 허용</b>을 켜야 해요 (메뉴가 없으면 <b>개발자
+                  모드</b>를 먼저 켜세요).</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>스크립트 붙여 넣기</h3>
+              <p>Tampermonkey 아이콘 → <b>새 스크립트 만들기</b>를 누르고, 기본 내용을 모두 지운 뒤 <a
+                  href="https://github.com/Saynotrue/Linea/blob/main/tampermonkey.js" target="_blank"
+                  rel="noopener"><code>tampermonkey.js</code></a> 내용을 전부 붙여 넣고 저장(⌘S / Ctrl+S)하세요.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+              <h3>유튜브 뮤직에서 재생</h3>
+              <p><a href="https://music.youtube.com" target="_blank" rel="noopener">music.youtube.com</a>을 새로고침하고 곡을
+                재생하면 위젯에 가사가 나타나요.</p>
+              <p class="muted">A와 B는 하는 일이 같아요. 둘 다 켜 두면 재생 정보가 두 번 보내지니 하나만 켜 주세요.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- C -->
+      <div class="steps-panel" data-panel="c" hidden>
+        <ol class="steps">
+          <li class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+              <h3>Linea Player 설치</h3>
+              <div class="dl-row">
+                <a class="file" data-asset="player-mac"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>macOS</b><span
+                    data-name="player-mac">Linea.Player-…-arm64.dmg</span></a>
+                <a class="file" data-asset="player-win-setup"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>Windows 설치형</b><span
+                    data-name="player-win-setup">Linea.Player.Setup.….exe</span></a>
+                <a class="file" data-asset="player-win-portable"
+                  href="https://github.com/Saynotrue/Linea/releases/latest"><b>Windows 실행형</b><span
+                    data-name="player-win-portable">Linea.Player.….exe</span></a>
+              </div>
+              <p class="muted">브라우저 · 확장 프로그램 · Tampermonkey가 필요 없어요. Linea가 켜져 있으면 먼저 종료하세요 (둘은 같이 실행할 수 없어요).</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+              <h3>유튜브 뮤직 창에서 로그인</h3>
+              <p>앱을 실행하면 위젯과 함께 유튜브 뮤직 창이 열려요. 오른쪽 위 <b>로그인</b>으로 구글 계정에 로그인하세요. 처음 한 번만 하면 돼요.</p>
+              <p class="muted">구글은 앱 안 브라우저의 로그인을 막기 때문에, Linea Player는 구글 로그인 페이지에서만 파이어폭스처럼 접속해요. 이 방식이 꺼려지면 A나 B를
+                쓰세요.</p>
+            </div>
+          </li>
+          <li class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+              <h3>재생하면 끝</h3>
+              <p>유튜브 뮤직 창에서 곡을 재생하면 위젯에 가사가 나타나요. 창을 닫아도 음악은 계속 나오고, 트레이 아이콘 → <b>유튜브 뮤직 열기</b>로 다시 열 수 있어요.</p>
+            </div>
+          </li>
+        </ol>
+      </div>
+
+      <!-- 첫 실행 경고 -->
+      <div class="firstrun reveal" id="first-run">
+        <div class="firstrun-col">
+          <h3><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path fill="currentColor"
+                d="M16.37 12.6c-.02-2.3 1.88-3.4 1.97-3.46-1.07-1.57-2.74-1.78-3.33-1.8-1.42-.14-2.77.84-3.49.84-.72 0-1.83-.82-3.01-.8-1.55.02-2.98.9-3.78 2.29-1.61 2.8-.41 6.94 1.16 9.21.77 1.11 1.68 2.36 2.88 2.31 1.16-.05 1.59-.75 2.99-.75 1.4 0 1.79.75 3.01.72 1.24-.02 2.03-1.13 2.79-2.25.88-1.29 1.24-2.54 1.26-2.6-.03-.01-2.42-.93-2.45-3.68zM14.07 5.85c.64-.77 1.07-1.85.95-2.92-.92.04-2.03.61-2.69 1.38-.59.68-1.11 1.78-.97 2.83 1.02.08 2.07-.52 2.71-1.29z" />
+            </svg> macOS 첫 실행 경고</h3>
+          <p>앱이 Apple 공증을 받지 않아 경고가 뜰 수 있어요.</p>
+          <p><b>"확인되지 않은 개발자"</b> → 시스템 설정 → 개인정보 보호 및 보안 → 아래쪽 <b>그래도 열기</b></p>
+          <p><b>"손상되었기 때문에 열 수 없습니다"</b> → 터미널에서 한 번 실행한 뒤 다시 열기</p>
+          <div class="codes">
+            <button class="copy" data-copy='xattr -cr "/Applications/Linea.app"'
+              type="button"><code>xattr -cr "/Applications/Linea.app"</code><span>복사</span></button>
+            <button class="copy" data-copy='xattr -cr "/Applications/Linea Player.app"'
+              type="button"><code>xattr -cr "/Applications/Linea Player.app"</code><span>복사</span></button>
+          </div>
+        </div>
+        <div class="firstrun-col">
+          <h3><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <path fill="currentColor"
+                d="M3 5.5 10 4.5v7H3zm0 13 7 1v-7H3zM11 4.3 21 3v8.5H11zm0 15.4L21 21v-8.5H11z" />
+            </svg> Windows 첫 실행 경고</h3>
+          <p><b>"Windows의 PC 보호" (SmartScreen)</b> → <b>추가 정보 → 실행</b>. 코드 서명을 하지 않은 앱이라 뜨는 안내예요.</p>
+          <p><b>방화벽 허용 창</b> → 허용해도 괜찮아요. 위젯은 로컬(127.0.0.1)에서만 통신해 외부에 열리지 않아요.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ───────── 사용법 ───────── -->
+    <section class="section" id="usage">
+      <div class="section-head reveal">
+        <p class="kicker">사용법</p>
+        <h2>알아 두면 편한 것들</h2>
+      </div>
+
+      <div class="usage-grid">
+        <article class="card reveal">
+          <h3>화면 모드</h3>
+          <ul class="list">
+            <li><b>Bar</b> 화면 아래의 가로 바. 기본 모드</li>
+            <li><b>LP</b> 레코드판 모양의 작은 위젯</li>
+            <li><b>전체화면</b> 바의 ⛶ 버튼 또는 위젯 빈 곳 더블클릭</li>
+          </ul>
+          <p class="muted">Bar ↔ LP는 트레이 아이콘 → 설정 → 위젯 스타일에서 바꿔요.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>전체화면 키보드</h3>
+          <dl class="keys">
+            <div>
+              <dt><kbd>Space</kbd></dt>
+              <dd>재생 / 일시정지</dd>
+            </div>
+            <div>
+              <dt><kbd>←</kbd><kbd>→</kbd></dt>
+              <dd>5초 뒤로 / 앞으로</dd>
+            </div>
+            <div>
+              <dt><kbd>↑</kbd><kbd>↓</kbd></dt>
+              <dd>가사 싱크 ±50ms</dd>
+            </div>
+            <div>
+              <dt><kbd>Esc</kbd></dt>
+              <dd>전체화면 나가기</dd>
+            </div>
+          </dl>
+        </article>
+
+        <article class="card reveal">
+          <h3>전체화면 마우스</h3>
+          <ul class="list">
+            <li><b>앨범 아트</b> 누르면 뮤직비디오로 전환</li>
+            <li><b>가사 줄</b> 누르면 그 부분으로 이동</li>
+            <li><b>진행 바</b> 누르거나 끌어서 이동</li>
+            <li><b>文가</b> 번역 켜기 · <b>가사</b> 가사 창 보이기/숨기기</li>
+          </ul>
+          <p class="muted">마우스를 3초 동안 움직이지 않으면 버튼과 커서가 숨겨져요.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>AI 문맥 번역 켜기 (무료)</h3>
+          <ol class="list numbered">
+            <li><a href="https://build.nvidia.com/" target="_blank" rel="noopener">build.nvidia.com</a>에 가입하고 로그인</li>
+            <li>프로필 → API Keys → Generate API Key (키는 만들 때 한 번만 보여요)</li>
+            <li>트레이 아이콘 → 설정 → <b>NVIDIA API 키</b>에 붙여 넣고 저장</li>
+          </ol>
+          <p class="muted">키는 이 컴퓨터에만 암호화해 저장돼요. 한 곡에 1~2분 걸리고, 다음 곡은 미리 번역해 둬요.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>뮤직비디오로 보기</h3>
+          <p>전체화면에서 앨범 아트를 누르세요. 노래(음원)를 듣는 중이면 유튜브 뮤직의 "노래 / 동영상"으로 연결된 뮤직비디오가, 전주 · 간주 길이까지 맞춰 소리 없이 재생돼요.</p>
+          <p class="muted">배경은 설정 → 영상 배경에서 <b>영상 블러</b> / <b>앨범아트 색</b> 중 골라요. 앨범아트 색이 더 가벼워요.</p>
+        </article>
+
+        <article class="card reveal">
+          <h3>트레이 아이콘</h3>
+          <ul class="list">
+            <li><b>설정</b> 투명도, 자동 페이드, 위젯 스타일, 가사 싱크 등</li>
+            <li><b>숨기기 / 보이기</b> 단축키 <kbd>⌘</kbd><kbd>⇧</kbd><kbd>Space</kbd> (설정에서 켜기)</li>
+            <li><b>종료</b></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- ───────── FAQ ───────── -->
+    <section class="section" id="faq">
+      <div class="section-head reveal">
+        <p class="kicker">자주 묻는 질문</p>
+        <h2>막혔을 때</h2>
+      </div>
+
+      <div class="faq">
+        <details class="reveal">
+          <summary>위젯에 아무것도 나오지 않아요</summary>
+          <p>위젯 앱이 실행 중인지, 확장 프로그램이나 Tampermonkey 스크립트가 켜져 있는지 확인하고 유튜브 뮤직 탭을 새로고침하세요. Linea와 Linea Player를 동시에 켜면 연결되지
+            않아요 (같은 포트 8888 · 8889를 써요).</p>
+        </details>
+        <details class="reveal">
+          <summary>엉뚱한 곡 정보가 나와요</summary>
+          <p>브라우저와 Linea Player에서 동시에 재생하거나, 확장 프로그램과 Tampermonkey 스크립트가 둘 다 켜져 있으면 정보가 섞여요. 한 곳만 남겨 주세요.</p>
+        </details>
+        <details class="reveal">
+          <summary>이퀄라이저가 움직이지 않아요</summary>
+          <p>브라우저 정책상 유튜브 뮤직 페이지를 한 번 클릭해야 소리 분석이 시작돼요. Linea Player는 클릭하지 않아도 돼요.</p>
+        </details>
+        <details class="reveal">
+          <summary>가사가 소리보다 빠르거나 늦어요</summary>
+          <p>전체화면에서 ↑ / ↓ 키, 또는 설정 → 가사 싱크 조절로 맞추세요. 커버곡은 원곡과 전주 길이가 달라 조절이 필요할 수 있어요.</p>
+        </details>
+        <details class="reveal">
+          <summary>"가사 없음"이 떠요</summary>
+          <p>모든 가사 제공처에 싱크 가사가 없는 곡이에요. 가사 서버가 잠깐 바쁜 경우라면 자동으로 몇 번 다시 찾아요.</p>
+        </details>
+        <details class="reveal">
+          <summary>"이 곡은 연결된 영상이 없어요"가 떠요</summary>
+          <p>Linea Connector 또는 Tampermonkey 스크립트가 9.4 이상인지 확인하고 유튜브 뮤직 탭을 새로고침하세요. 유튜브 뮤직 위쪽에 "노래 / 동영상" 버튼이 없는 곡은 연결된
+            뮤직비디오가 없어요.</p>
+        </details>
+        <details class="reveal">
+          <summary>"이 영상은 앱에서 재생할 수 없어요"가 떠요</summary>
+          <p>올린 사람이 다른 사이트에서의 재생(퍼가기)을 막은 영상이에요. 이 곡은 앨범 아트로만 볼 수 있어요.</p>
+        </details>
+        <details class="reveal">
+          <summary>영상이 끊기거나 컴퓨터가 버벅겨려요</summary>
+          <p>설정 → 영상 배경을 <b>앨범아트 색</b>으로 바꾸면 영상을 하나만 재생해 가벼워져요.</p>
+        </details>
+        <details class="reveal">
+          <summary>어떤 정보가 밖으로 나가나요?</summary>
+          <p>가사 검색을 위해 곡 제목과 가수 이름을 가사 제공처(lrclib 등)에 보내요. 번역을 켜면 가사를 구글 번역으로, AI 번역을 쓰면 NVIDIA로 보내요. 영상은 유튜브 퍼가기 플레이어로
+            받아 와요. 위젯과 브라우저 사이의 통신은 로컬(127.0.0.1)에서만 이뤄져요.</p>
+        </details>
+      </div>
+    </section>
+
+    <!-- ───────── 마지막 CTA ───────── -->
+    <section class="final reveal">
+      <img src="assets/icon.png" alt="" width="72" height="72">
+      <h2>오늘 듣는 노래부터, 가사와 함께.</h2>
+      <p>무료로 받고, 마음에 들면 GitHub에 ⭐ 하나 남겨 주세요.</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary btn-lg" data-asset="linea-mac" data-os="mac"
+          href="https://github.com/Saynotrue/Linea/releases/latest">macOS용 다운로드</a>
+        <a class="btn btn-glass btn-lg" data-asset="linea-win-setup" data-os="win"
+          href="https://github.com/Saynotrue/Linea/releases/latest">Windows용 다운로드</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="brand">
+      <img src="assets/icon.png" alt="" width="22" height="22">
+      <span>Linea</span>
+    </div>
+    <p>YouTube Music과 YouTube는 Google LLC의 상표이며, Linea는 Google과 관련이 없는 개인 프로젝트입니다.</p>
+    <nav aria-label="바닥 메뉴">
+      <a href="https://github.com/Saynotrue/Linea" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/Saynotrue/Linea/releases" target="_blank" rel="noopener">릴리스</a>
+      <a href="https://github.com/Saynotrue/Linea/issues" target="_blank" rel="noopener">문제 신고</a>
+    </nav>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+  <script src="demo.js"></script>
+</body>
+
+</html>
