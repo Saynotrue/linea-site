@@ -8,7 +8,7 @@
   <meta name="description"
     content="유튜브 뮤직에서 재생 중인 곡의 싱크 가사를 화면 위에 띄워 주는 데스크톱 위젯. 한국어 번역, 뮤직비디오 보기, 이퀄라이저까지. macOS · Windows 무료.">
   <meta property="og:title" content="Linea — 유튜브 뮤직 싱크 가사 위젯">
-  <meta property="og:description" content="재생 중인 곡의 가사가 한 줄씩, 한국어 번역과 함께.">
+  <meta property="og:description" content="YouTube Music 을 더 느낌있게">
   <meta property="og:image" content="assets/og-v2.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -163,23 +163,38 @@
           <div class="lpd-bg" aria-hidden="true"></div>
           <div class="lpd-shade" aria-hidden="true"></div>
           <div class="lpd-inner">
-            <div class="lpd-vinyl" id="lpd-vinyl" aria-hidden="true"><div class="lpd-cover"></div><div class="lpd-hole"></div></div>
+            <div class="lpd-vinyl" id="lpd-vinyl" aria-hidden="true">
+              <div class="lpd-cover"></div>
+              <div class="lpd-hole"></div>
+            </div>
             <div class="lpd-footer">
               <div class="lpd-top">
-                <div class="lpd-text"><div class="lpd-artist" id="lpd-artist"></div><div class="lpd-title" id="lpd-title"></div></div>
+                <div class="lpd-text">
+                  <div class="lpd-artist" id="lpd-artist"></div>
+                  <div class="lpd-title" id="lpd-title"></div>
+                </div>
                 <div class="lpd-controls">
-                  <button type="button" id="lpd-prev" aria-label="이전 곡"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14l-10-7z" /></svg></button>
-                  <button type="button" id="lpd-play" aria-label="일시정지"><svg viewBox="0 0 24 24"><path class="ico-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" /><path class="ico-play" d="M7 4.5v15L19.5 12z" /></svg></button>
-                  <button type="button" id="lpd-next" aria-label="다음 곡"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l10-7z" /></svg></button>
+                  <button type="button" id="lpd-prev" aria-label="이전 곡"><svg viewBox="0 0 24 24">
+                      <path d="M6 5h2v14H6zM20 5v14l-10-7z" />
+                    </svg></button>
+                  <button type="button" id="lpd-play" aria-label="일시정지"><svg viewBox="0 0 24 24">
+                      <path class="ico-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" />
+                      <path class="ico-play" d="M7 4.5v15L19.5 12z" />
+                    </svg></button>
+                  <button type="button" id="lpd-next" aria-label="다음 곡"><svg viewBox="0 0 24 24">
+                      <path d="M16 5h2v14h-2zM4 5v14l10-7z" />
+                    </svg></button>
                 </div>
               </div>
               <div class="lpd-lyric" id="lpd-lyric"></div>
-              <div class="lpd-progress" id="lpd-progress" role="slider" tabindex="0" aria-label="재생 위치"><span></span></div>
+              <div class="lpd-progress" id="lpd-progress" role="slider" tabindex="0" aria-label="재생 위치"><span></span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <p class="demo-caption reveal">위 화면은 직접 눌러 볼 수 있는 데모예요. 재생 · 이전/다음 곡, 진행 바, 가사 줄, 번역(文가), 가사 창, 소리, 앨범 아트를 눌러 보세요. 오른쪽 아래 LP 위젯도 같이 움직여요.
+      <p class="demo-caption reveal">위 화면은 직접 눌러 볼 수 있는 데모예요. 재생 · 이전/다음 곡, 진행 바, 가사 줄, 번역(文가), 가사 창, 소리, 앨범 아트를 눌러 보세요.
+        오른쪽 아래 LP 위젯도 같이 움직여요.
         <span>곡 · 가사 · 영상 · 음악은 모두 데모용으로 만든 예시예요.</span>
       </p>
     </section>
@@ -623,7 +638,8 @@
         </details>
         <details class="reveal">
           <summary>어떤 정보가 밖으로 나가나요?</summary>
-          <p>가사 검색을 위해 곡 제목과 가수 이름을 가사 제공처(lrclib 등)에 보내요. 번역을 켜면 가사를 구글 번역으로, Azure 키를 넣었으면 Microsoft Azure로 보내요. 번역한 곡은 이 컴퓨터에만 저장돼요. 영상은 유튜브 퍼가기 플레이어로
+          <p>가사 검색을 위해 곡 제목과 가수 이름을 가사 제공처(lrclib 등)에 보내요. 번역을 켜면 가사를 구글 번역으로, Azure 키를 넣었으면 Microsoft Azure로 보내요. 번역한
+            곡은 이 컴퓨터에만 저장돼요. 영상은 유튜브 퍼가기 플레이어로
             받아 와요. 위젯과 브라우저 사이의 통신은 로컬(127.0.0.1)에서만 이뤄져요.</p>
         </details>
       </div>
