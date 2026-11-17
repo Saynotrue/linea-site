@@ -155,10 +155,31 @@
           <div class="mini-art"></div>
           <div class="mini-text"><strong id="mini-title"></strong><span id="mini-artist"></span></div>
           <div class="mini-lyric" id="mini-lyric"></div>
-          <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="mini-eq"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        </div>
+
+        <!-- LP 위젯 (실제 앱 LP 모드 320×360을 그대로 옮겨 줄여 띄움. 데모와 같은 곡·가사·재생 상태를 따라감, 버튼 동작) -->
+        <div class="mock-lp" aria-label="LP 위젯 데모">
+          <div class="lpd-bg" aria-hidden="true"></div>
+          <div class="lpd-shade" aria-hidden="true"></div>
+          <div class="lpd-inner">
+            <div class="lpd-vinyl" id="lpd-vinyl" aria-hidden="true"><div class="lpd-cover"></div><div class="lpd-hole"></div></div>
+            <div class="lpd-footer">
+              <div class="lpd-top">
+                <div class="lpd-text"><div class="lpd-artist" id="lpd-artist"></div><div class="lpd-title" id="lpd-title"></div></div>
+                <div class="lpd-controls">
+                  <button type="button" id="lpd-prev" aria-label="이전 곡"><svg viewBox="0 0 24 24"><path d="M6 5h2v14H6zM20 5v14l-10-7z" /></svg></button>
+                  <button type="button" id="lpd-play" aria-label="일시정지"><svg viewBox="0 0 24 24"><path class="ico-pause" d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" /><path class="ico-play" d="M7 4.5v15L19.5 12z" /></svg></button>
+                  <button type="button" id="lpd-next" aria-label="다음 곡"><svg viewBox="0 0 24 24"><path d="M16 5h2v14h-2zM4 5v14l10-7z" /></svg></button>
+                </div>
+              </div>
+              <div class="lpd-lyric" id="lpd-lyric"></div>
+              <div class="lpd-progress" id="lpd-progress" role="slider" tabindex="0" aria-label="재생 위치"><span></span></div>
+            </div>
+          </div>
         </div>
       </div>
-      <p class="demo-caption reveal">위 화면은 직접 눌러 볼 수 있는 데모예요. 재생 · 이전/다음 곡, 진행 바, 가사 줄, 번역(文가), 가사 창, 소리, 앨범 아트를 눌러 보세요.
+      <p class="demo-caption reveal">위 화면은 직접 눌러 볼 수 있는 데모예요. 재생 · 이전/다음 곡, 진행 바, 가사 줄, 번역(文가), 가사 창, 소리, 앨범 아트를 눌러 보세요. 오른쪽 아래 LP 위젯도 같이 움직여요.
         <span>곡 · 가사 · 영상 · 음악은 모두 데모용으로 만든 예시예요.</span>
       </p>
     </section>

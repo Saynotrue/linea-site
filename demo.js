@@ -6,6 +6,7 @@
   if (!demo) return;
   const $ = (id) => document.getElementById(id);
   const wrap = demo.closest('.mock-wrap');
+  const lpWidget = document.querySelector('.mock-lp');
 
   // ───────── 데모 곡 ─────────
   //   lines: [시간(초), 가사, 번역]. chords: 한 마디씩 [패드 음들(MIDI), 베이스 음]
@@ -159,6 +160,7 @@
       el.style.transform = `translateY(${slots[Math.max(-3, Math.min(3, off))]}cqw) scale(${off === 0 ? NOW_SCALE : 1})`;
     });
     $('mini-lyric').textContent = lines[idx][1];
+    $('lpd-lyric').textContent = lines[idx][1];
   }
 
   // ───────── 곡 정보 · 색 ─────────
@@ -168,6 +170,8 @@
     $('demo-artist').textContent = s.artist;
     $('mini-title').textContent = s.title;
     $('mini-artist').textContent = s.artist;
+    $('lpd-title').textContent = s.title;
+    $('lpd-artist').textContent = s.artist;
     for (const el of [demo, wrap]) {
       el.style.setProperty('--art', s.colors.art);
       for (const k of ['c1', 'c2', 'c3', 'c4', 'base']) el.style.setProperty(`--${k}`, s.colors[k]);
@@ -190,6 +194,8 @@
     state.startedAt = now();
     state.playing = playing;
     demo.classList.toggle('is-paused', !playing);
+    lpWidget.classList.toggle('is-playing', playing);
+    $('lpd-play').setAttribute('aria-label', playing ? '일시정지' : '재생');
     $('demo-play').setAttribute('aria-label', playing ? '일시정지' : '재생');
     audio.reset();
   }
@@ -252,6 +258,22 @@
     seek(ratioAt(e) * song().duration);
   });
   const endDrag = () => { dragging = false; bar.classList.remove('is-drag'); };
+
+  // ───────── LP 위젯: 데모와 같은 곡·재생 상태. 버튼과 진행 바도 같은 동작 ─────────
+  $('lpd-play').addEventListener('click', () => setPlaying(!state.playing));
+  $('lpd-next').addEventListener('click', () => changeSong(1));
+  $('lpd-prev').addEventListener('click', () => (songTime() > 3 ? seek(0) : changeSong(-1)));
+  const lpBar = $('lpd-progress');
+  const lpFill = lpBar.querySelector('span');
+  let lpDragging = false;
+  const lpRatioAt = (e) => { const r = lpBar.getBoundingClientRect(); return Math.max(0, Math.min(1, (e.clientX - r.left) / r.width)); };
+  lpBar.addEventListener('pointerdown', (e) => { lpDragging = true; lpBar.setPointerCapture(e.pointerId); seek(lpRatioAt(e) * song().duration); });
+  lpBar.addEventListener('pointermove', (e) => { if (lpDragging) seek(lpRatioAt(e) * song().duration); });
+  lpBar.addEventListener('pointerup', () => { lpDragging = false; });
+  lpBar.addEventListener('pointercancel', () => { lpDragging = false; });
+  lpBar.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft' || e.key === 'ArrowRight') { e.preventDefault(); seek(songTime() + (e.key === 'ArrowLeft' ? -5 : 5)); }
+  });
   bar.addEventListener('pointerup', endDrag);
   bar.addEventListener('pointercancel', endDrag);
   bar.addEventListener('keydown', (e) => {
@@ -438,6 +460,9 @@
   //   소리를 켜면 실제 소리의 주파수 세기로, 꺼져 있으면 박자에 맞춰 흉내 냄. 일시정지면 점으로
   const eqBars = [...document.querySelectorAll('#demo-eq i')];
   const miniBars = [...document.querySelectorAll('.mock-bar .mini-eq i')];
+  // 바 위젯 막대 색: 아이콘 색(분홍 → 보라 → 파랑 → 초록)을 10개에 고르게
+  const MINI_COLORS = ['#f2788a', '#e070a0', '#c66fb0', '#a873c4', '#9b5bd0', '#7c86d4', '#6fa3e0', '#74c0ef', '#6cc7b8', '#5fd08f'];
+  miniBars.forEach((el, i) => { el.style.background = MINI_COLORS[i] || '#fff'; });
   const eqVals = new Array(10).fill(0);
   const BANDS = [[1, 2], [2, 3], [3, 5], [5, 8], [8, 12], [12, 18], [18, 26], [26, 38], [38, 55], [55, 80]];
   function updateEq(t, dt) {
@@ -461,7 +486,8 @@
       eqVals[i] += (target - eqVals[i]) * (1 - Math.exp(-dt / tau));
       eqBars[i].style.height = `${(0.45 + Math.min(1, eqVals[i]) * 1.45).toFixed(3)}cqw`;
     }
-    miniBars.forEach((el, i) => { el.style.height = `${(4 + Math.min(1, eqVals[i + 1]) * 14).toFixed(1)}px`; });
+    // 바 위젯 막대도 같은 값 (높이 비율이 같아 두 이퀄라이저가 똑같이 움직임)
+    miniBars.forEach((el, i) => { el.style.height = `${(4 + Math.min(1, eqVals[i]) * 14).toFixed(1)}px`; });
   }
 
   // ───────── 앨범 아트 → 영상 ─────────
@@ -568,6 +594,7 @@
     if (visible) {
       placeLyrics();
       fill.style.width = `${(t / song().duration) * 100}%`;
+      lpFill.style.width = `${(t / song().duration) * 100}%`;
       bar.setAttribute('aria-valuemax', Math.round(song().duration));
       bar.setAttribute('aria-valuenow', Math.round(t));
       bar.setAttribute('aria-valuetext', `${fmt(t)} / ${fmt(song().duration)}`);
@@ -580,6 +607,7 @@
     requestAnimationFrame(frame);
   }
 
+  lpWidget.classList.toggle('is-playing', state.playing);
   applySong(false);
   requestAnimationFrame(frame);
 })();
