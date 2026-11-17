@@ -216,7 +216,7 @@
             </svg>
           </div>
           <h3>한국어 번역</h3>
-          <p>외국어 가사 아래에 한국어 번역이 붙어요. NVIDIA 무료 AI 키를 넣으면 곡 전체의 흐름과 말투를 살린 번역으로 바뀌어요.</p>
+          <p>외국어 가사 아래에 한국어 번역이 붙어요. Azure 번역 키(무료)를 넣으면 곡 전체를 보고 말투를 맞춘 번역으로 바뀌고, 한 번 번역한 곡은 저장해 두고 바로 다시 보여 줘요.</p>
         </article>
 
         <article class="card reveal">
@@ -552,13 +552,14 @@
         </article>
 
         <article class="card reveal">
-          <h3>AI 문맥 번역 켜기 (무료)</h3>
+          <h3>Azure 번역 켜기 (무료, 매월 200만 자)</h3>
           <ol class="list numbered">
-            <li><a href="https://build.nvidia.com/" target="_blank" rel="noopener">build.nvidia.com</a>에 가입하고 로그인</li>
-            <li>프로필 → API Keys → Generate API Key (키는 만들 때 한 번만 보여요)</li>
-            <li>트레이 아이콘 → 설정 → <b>NVIDIA API 키</b>에 붙여 넣고 저장</li>
+            <li><a href="https://portal.azure.com/" target="_blank" rel="noopener">Azure Portal</a>에 가입하고 로그인</li>
+            <li>검색창에 Translator → <b>Marketplace의 Translator</b> → 만들기 (지역 Korea Central, 가격 책정 계층 <b>Free F0</b>)</li>
+            <li>리소스 → 키 및 엔드포인트에서 <b>키 1</b>과 <b>위치/지역</b> 확인</li>
+            <li>트레이 아이콘 → 설정 → <b>Azure Translator 키</b>에 키와 지역을 넣고 저장</li>
           </ol>
-          <p class="muted">키는 이 컴퓨터에만 암호화해 저장돼요. 한 곡에 1~2분 걸리고, 다음 곡은 미리 번역해 둬요.</p>
+          <p class="muted">키는 이 컴퓨터에만 암호화해 저장돼요. 무료 F0는 한도를 넘어도 요금이 나가지 않고, 그달은 구글 번역으로 바뀌어요.</p>
         </article>
 
         <article class="card reveal">
@@ -622,7 +623,7 @@
         </details>
         <details class="reveal">
           <summary>어떤 정보가 밖으로 나가나요?</summary>
-          <p>가사 검색을 위해 곡 제목과 가수 이름을 가사 제공처(lrclib 등)에 보내요. 번역을 켜면 가사를 구글 번역으로, AI 번역을 쓰면 NVIDIA로 보내요. 영상은 유튜브 퍼가기 플레이어로
+          <p>가사 검색을 위해 곡 제목과 가수 이름을 가사 제공처(lrclib 등)에 보내요. 번역을 켜면 가사를 구글 번역으로, Azure 키를 넣었으면 Microsoft Azure로 보내요. 번역한 곡은 이 컴퓨터에만 저장돼요. 영상은 유튜브 퍼가기 플레이어로
             받아 와요. 위젯과 브라우저 사이의 통신은 로컬(127.0.0.1)에서만 이뤄져요.</p>
         </details>
       </div>
